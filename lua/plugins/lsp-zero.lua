@@ -129,10 +129,6 @@ return {
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
             end)
-
-            -- (Optional) Configure lua language server for neovim
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require("lspconfig").lua_ls.setup(lua_opts)
         end
     }
 }
