@@ -7,4 +7,5 @@ return {
     vim.keymap.set("n", "go", "<Cmd>call VSCodeNotify('editor.action.peekTypeDefinition')<CR>"),
     vim.keymap.set("n", "gr", "<Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>"),
     vim.keymap.set("n", "gs", "<Cmd>call VSCodeNotify('editor.action.triggerParameterHints')<CR>"),
+    vim.keymap.set("n", "<F3>", "<Cmd>call VSCodeNotify('editor.action.formatDocument')<CR>"),
 }
