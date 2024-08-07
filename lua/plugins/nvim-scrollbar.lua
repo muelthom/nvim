@@ -1,6 +1,6 @@
 return {
     "petertriho/nvim-scrollbar",
-    cond = false,
+    cond = true,
     opts = {
         function() require("nvim-scrollbar") end,
         show = true,
