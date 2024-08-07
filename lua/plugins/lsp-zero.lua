@@ -30,7 +30,6 @@ return {
             },
         },
         config = function()
-            -- Here is where you configure the autocompletion settings.
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_cmp()
 
@@ -78,7 +77,7 @@ return {
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
-                formatting = lsp_zero.cmp_format(),
+                formatting = lsp_zero.cmp_format({ details = true }), -- Show source name in completion menu
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -109,7 +108,10 @@ return {
         config = function()
             -- This is where all the LSP shenanigans will live
             local lsp_zero = require("lsp-zero")
-            lsp_zero.extend_lspconfig()
+            lsp_zero.extend_lspconfig({
+                sign_text = true, -- Enable or disable the diagnostic signs
+                capabilities = require("cmp_nvim_lsp").default_capabilities()
+            })
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
