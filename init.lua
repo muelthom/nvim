@@ -2,6 +2,7 @@ if vim.g.vscode then
     -- VSCode extension
     require("remaps")
     require("plugins.vscode")
+    require("functions")
 else
     -- Ordinary Neovim
 
@@ -16,6 +17,7 @@ else
 
     -- Editor settings
     require("settings")
+    require("functions")
 
     -- Configure plugins
     -- Bootstrap lazy if it is not installed yet.

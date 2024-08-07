@@ -69,3 +69,5 @@ vim.api.nvim_create_user_command("CWDF",
     end,
     { desc = "Change cwd to that of the currently opened file." }
 )
+
+vim.api.nvim_set_keymap('n', '!', ':lua invert_word()<CR>', { noremap = true, silent = true })
