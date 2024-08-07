@@ -135,6 +135,12 @@ return {
                 vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end)
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
+
+                -- Format code using a keybinding
+                local opts = { buffer = bufnr }
+                vim.keymap.set({ "n", "x" }, "gq", function()
+                    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+                end, opts)
             end)
         end
     }
