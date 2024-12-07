@@ -5,28 +5,28 @@ return {
         {
             "<leader>ff",
             function() require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() }) end,
-            desc = "Find File",
+            desc = "Find files in cwd",
         },
         {
             "<leader>fs",
             function()
                 require("telescope.builtin").grep_string({
-                    cwd = require("lazy.core.config").options.root,
+                    cwd = require("telescope.utils").buffer_dir(),
                     search =
                         vim.fn.input("Grep > ")
                 })
             end,
-            desc = "Find String",
+            desc = "Find string",
         },
         {
             "<leader>fg",
-            function() require("telescope.builtin").git_files({ cwd = require("lazy.core.config").options.root }) end,
-            desc = "Find Git File",
+            function() require("telescope.builtin").git_files({ cwd = require("telescope.utils").buffer_dir() }) end,
+            desc = "Find Git files",
         },
         {
             "<leader>fb",
             function() require("telescope.builtin").buffers({ cwd = require("lazy.core.config").options.root }) end,
-            desc = "Find Buffer",
+            desc = "Find buffers",
         },
     },
     opts = {
