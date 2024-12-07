@@ -1,7 +1,7 @@
 return {
     {
         "VonHeikemen/lsp-zero.nvim",
-        branch = "v3.x",
+        branch = "v4.x",
         lazy = true,
         config = false,
         init = function()
@@ -70,8 +70,8 @@ return {
                                 return {}
                             end
                             return { buf }
-                        end,
-                    },
+                        end
+                    }
                 },
                 snippet = {
                     expand = function(args)
@@ -131,6 +131,7 @@ return {
                 -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
 
+                vim.keymap.set("n", "ga", function() vim.lsp.buf.code_action() end)
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
                 vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
                 vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end)
@@ -138,6 +139,7 @@ return {
                 vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end)
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
+                vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end)
 
                 -- Format code using a keybinding
                 local opts = { buffer = bufnr }
@@ -145,6 +147,18 @@ return {
                     vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
                 end, opts)
             end)
+
+            -- Language server configurations
+            require('lspconfig').lua_ls.setup({
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" }
+                        }
+                    }
+                }
+            })
+            require('lspconfig').pylsp.setup({})
         end
     }
 }
