@@ -54,9 +54,9 @@ return {
                     { name = "nvim_lsp" }, -- Show completions send by the language server
                     { name = "nvim_lsp_signature_help" },
                     { name = "codeium" },
-                    { name = "path" },     -- Gives completions based on the file system
+                    { name = "path" },    -- Gives completions based on the file system
                     {
-                        name = "luasnip",  -- Shows custom snippets in the suggestions
+                        name = "luasnip", -- Shows custom snippets in the suggestions
                         keyword_length = 2
                     },
                     {
@@ -111,6 +111,7 @@ return {
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_lspconfig({
                 sign_text = true, -- Enable or disable the diagnostic signs
+
                 capabilities = require("cmp_nvim_lsp").default_capabilities()
             })
 
@@ -119,9 +120,16 @@ return {
                 ensure_installed = {},
                 handlers = {
                     lsp_zero.default_setup,
+
+                    -- Language server configurations
+                    -- https://lsp-zero.netlify.app/docs/language-server-configuration.html#configure-language-servers
                     lua_ls = function()
                         local lua_opts = lsp_zero.nvim_lua_ls()
                         require("lspconfig").lua_ls.setup(lua_opts)
+                    end,
+
+                    pylsp = function()
+                        require("lspconfig").pylsp.setup({})
                     end,
                 }
             })
@@ -131,6 +139,7 @@ return {
                 -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
 
+                vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
                 vim.keymap.set("n", "ga", function() vim.lsp.buf.code_action() end)
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
                 vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
@@ -140,25 +149,8 @@ return {
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
                 vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end)
-
-                -- Format code using a keybinding
-                local opts = { buffer = bufnr }
-                vim.keymap.set({ "n", "x" }, "gq", function()
-                    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-                end, opts)
+                vim.keymap.set({"n", "x"}, "<F3>", function() vim.lsp.buf.format({async = true}) end)
             end)
-
-            -- Language server configurations
-            require('lspconfig').lua_ls.setup({
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" }
-                        }
-                    }
-                }
-            })
-            require('lspconfig').pylsp.setup({})
         end
     }
 }
