@@ -53,6 +53,7 @@ return {
                     -- Adjust the priority by changing the order of the items in the list.
                     { name = "nvim_lsp" }, -- Show completions send by the language server
                     { name = "nvim_lsp_signature_help" },
+                    { name = "codeium" },
                     { name = "path" },     -- Gives completions based on the file system
                     {
                         name = "luasnip",  -- Shows custom snippets in the suggestions
