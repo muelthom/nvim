@@ -33,4 +33,13 @@ vim.opt.smartcase = true
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
+vim.opt.list = true
+vim.opt.listchars = {
+    -- eol = "↵",
+    -- lead = '·',
+    nbsp = "␣",
+    tab = ">-",
+    trail = "·",
+}
+
 vim.cmd 'colorscheme habamax'
