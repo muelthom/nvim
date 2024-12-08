@@ -1,5 +1,4 @@
 -- "Set" directives (editor settings)
-
 vim.opt.syntax = "on"
 vim.opt.termguicolors = true
 
@@ -13,7 +12,28 @@ vim.opt.showcmd = true
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 6
-vim.opt.colorcolumn = "80,100"
+
+-- vim.opt.colorcolumn = "80,100"
+--
+-- Create an augroup for Python
+vim.api.nvim_create_augroup("Python", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "Python",
+    pattern = "python",
+    callback = function()
+        vim.opt.colorcolumn = "88"
+    end,
+})
+
+-- Create an augroup for C and C++
+vim.api.nvim_create_augroup("CC", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "CC",
+    pattern = { "c", "cpp" },
+    callback = function()
+        vim.opt.colorcolumn = "100"
+    end,
+})
 
 -- Indent options
 vim.opt.tabstop = 4
