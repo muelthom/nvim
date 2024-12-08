@@ -18,7 +18,7 @@ return {
         require("scrollbar.handlers.search").setup({
             -- hlslens config overrides
         })
-        require('gitsigns').setup()
+        require("gitsigns").setup()
         require("scrollbar.handlers.gitsigns").setup({
             on_attach = function(bufnr)
                 local gs = package.loaded.gitsigns

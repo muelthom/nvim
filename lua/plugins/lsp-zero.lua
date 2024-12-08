@@ -33,7 +33,6 @@ return {
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_cmp()
 
-            -- And you can configure cmp even more, if you want to.
             local cmp = require("cmp")
             local cmp_action = lsp_zero.cmp_action()
 
@@ -107,8 +106,8 @@ return {
             { "hrsh7th/cmp-nvim-lsp" },
         },
         config = function()
-            -- This is where all the LSP shenanigans will live
             local lsp_zero = require("lsp-zero")
+
             lsp_zero.extend_lspconfig({
                 sign_text = true, -- Enable or disable the diagnostic signs
 
@@ -135,8 +134,7 @@ return {
             })
 
             lsp_zero.on_attach(function(client, bufnr)
-                -- see :help lsp-zero-keybindings
-                -- to learn the available actions
+                -- See :help lsp-zero-keybindings
                 lsp_zero.default_keymaps({ buffer = bufnr })
 
                 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
@@ -149,8 +147,19 @@ return {
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
                 vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end)
-                vim.keymap.set({"n", "x"}, "<F3>", function() vim.lsp.buf.format({async = true}) end)
+                vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format({ async = true }) end)
             end)
+
+            vim.diagnostic.config({
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = "✘",
+                        [vim.diagnostic.severity.WARN] = "▲",
+                        [vim.diagnostic.severity.HINT] = "⚑",
+                        [vim.diagnostic.severity.INFO] = "»",
+                    },
+                },
+            })
         end
     }
 }

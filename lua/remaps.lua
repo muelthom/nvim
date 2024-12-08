@@ -60,7 +60,7 @@ vim.keymap.set({ "n", "v" }, "<leader>n", ":bnext<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>N", ":bprev<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>d", ":bnext<CR>")
 
-vim.api.nvim_set_keymap('t', '<C-t>', '<C-\\><C-n>:CFloatTerm<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-t>", "<C-\\><C-n>:CFloatTerm<CR>", { noremap = true, silent = true })
 
 -- Use "cwdf" for "change working directory to currently opened file".
 vim.api.nvim_create_user_command("CWDF",
@@ -70,4 +70,4 @@ vim.api.nvim_create_user_command("CWDF",
     { desc = "Change cwd to that of the currently opened file." }
 )
 
-vim.api.nvim_set_keymap('n', '!', ':lua invert_word()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "!", ":lua invert_word()<CR>", { noremap = true, silent = true })
