@@ -13,8 +13,6 @@ vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 6
 
--- vim.opt.colorcolumn = "80,100"
---
 -- Create an augroup for Python
 vim.api.nvim_create_augroup("Python", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
