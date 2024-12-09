@@ -60,4 +60,4 @@ vim.opt.listchars = {
     trail = "·",
 }
 
-vim.cmd 'colorscheme habamax'
+-- vim.cmd 'colorscheme habamax'
