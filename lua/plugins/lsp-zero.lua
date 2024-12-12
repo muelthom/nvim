@@ -130,8 +130,16 @@ return {
                     pylsp = function()
                         require("lspconfig").pylsp.setup({})
                     end,
+
+                    ruff = function()
+                        require("lspconfig").ruff.setup({})
+                    end,
                 }
             })
+
+            local allow_format = function(servers)
+                return function(client) return vim.tbl_contains(servers, client.name) end
+            end
 
             lsp_zero.on_attach(function(client, bufnr)
                 -- See :help lsp-zero-keybindings
@@ -147,7 +155,13 @@ return {
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
                 vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end)
-                vim.keymap.set({ "n", "x" }, "<F3>", function() vim.lsp.buf.format({ async = true }) end)
+                vim.keymap.set({ "n", "x" }, "<F3>",
+                    function()
+                        vim.lsp.buf.format({
+                            async = true,
+                            filter = allow_format({ "lua_ls", "ruff" })
+                        })
+                    end)
             end)
 
             vim.diagnostic.config({
