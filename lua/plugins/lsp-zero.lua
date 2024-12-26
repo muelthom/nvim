@@ -114,7 +114,7 @@ return {
                 capabilities = require("cmp_nvim_lsp").default_capabilities()
             })
 
-            require("mason").setup({})
+            require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
@@ -130,9 +130,9 @@ return {
                         require("lspconfig").lua_ls.setup(lua_opts)
                     end,
 
-                    pylsp = function()
-                        require("lspconfig").pylsp.setup({})
-                    end,
+                    -- pylsp = function()
+                    --     require("lspconfig").pylsp.setup({})
+                    -- end,
 
                     ruff = function()
                         require("lspconfig").ruff.setup({})
