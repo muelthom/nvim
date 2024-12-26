@@ -37,8 +37,8 @@ vim.keymap.set("n", "<leader>Y", "\"+y")
 -- Unmap Q.
 vim.keymap.set("n", "Q", "<nop>")
 
--- Turn off highlighting until the next search; mnemonic "highlight delete".
-vim.keymap.set("n", "<leader>hd", ":noh<CR>")
+-- Turn off highlighting until the next search.
+vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
 -- Select the whole file contents ("select all").
 vim.keymap.set("n", "<leader>sa", "ggVG")
