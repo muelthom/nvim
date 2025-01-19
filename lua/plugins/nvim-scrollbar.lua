@@ -14,7 +14,16 @@ return {
         -- show = true,
         -- set_highlights = true,
 
-        -- require("hlslens").setup() is not required.
+        require("hlslens").setup({
+            nearest_only = true,
+            nearest_float_when = true
+        })
+        local kopts = { noremap = true, silent = true }
+        vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require("hlslens").start()<CR>]], kopts)
+        vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require("hlslens").start()<CR>]], kopts)
+        vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require("hlslens").start()<CR>]], kopts)
+        vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], kopts)
+
         require("scrollbar.handlers.search").setup({
             -- hlslens config overrides
         })
