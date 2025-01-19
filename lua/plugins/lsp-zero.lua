@@ -50,16 +50,16 @@ return {
                 end,
                 sources = {
                     -- Adjust the priority by changing the order of the items in the list.
-                    { name = "nvim_lsp" }, -- Show completions send by the language server
+                    { name = "nvim_lsp" },
                     { name = "nvim_lsp_signature_help" },
                     { name = "codeium" },
-                    { name = "path" },    -- Gives completions based on the file system
+                    { name = "path" },
                     {
-                        name = "luasnip", -- Shows custom snippets in the suggestions
+                        name = "luasnip",
                         keyword_length = 2
                     },
                     {
-                        name = "buffer",    -- Provide suggestions based on the current file
+                        name = "buffer",
                         keyword_length = 4, -- The number of characters to be typed to trigger auto-completion
                         -- Avoid accidentally running this source on big files.
                         get_bufnrs = function()
