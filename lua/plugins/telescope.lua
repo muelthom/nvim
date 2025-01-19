@@ -25,7 +25,7 @@ return {
         },
         {
             "<leader>fb",
-            function() require("telescope.builtin").buffers({ cwd = require("lazy.core.config").options.root }) end,
+            function() require("telescope.builtin").buffers() end,
             desc = "Find buffers",
         },
     },
