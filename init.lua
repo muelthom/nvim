@@ -1,5 +1,5 @@
 if vim.g.vscode then
-    -- VSCode extension
+    -- VS Code extension
     require("remaps")
     require("plugins.vscode")
     require("functions")

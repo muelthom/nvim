@@ -6,7 +6,8 @@ _G.invert_word = function()
         ["start"] = "end",
         ["left"] = "right",
         ["first"] = "last",
-        ["private"] = "public"
+        ["private"] = "public",
+        ["PRIVATE"] = "PUBLIC"
     }
 
     -- Inverted mapping to support both directions

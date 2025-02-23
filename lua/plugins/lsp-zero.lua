@@ -26,7 +26,8 @@ return {
                 "hrsh7th/cmp-path",
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-cmdline",
-                "hrsh7th/nvim-cmp"
+                "hrsh7th/nvim-cmp",
+                "lukas-reineke/cmp-under-comparator"
             },
         },
         config = function()
@@ -52,7 +53,6 @@ return {
                     -- Adjust the priority by changing the order of the items in the list.
                     { name = "nvim_lsp" },
                     { name = "nvim_lsp_signature_help" },
-                    { name = "codeium" },
                     { name = "path" },
                     {
                         name = "luasnip",
@@ -61,16 +61,25 @@ return {
                     {
                         name = "buffer",
                         keyword_length = 4, -- The number of characters to be typed to trigger auto-completion
-                        -- Avoid accidentally running this source on big files.
                         get_bufnrs = function()
-                            local buf = vim.api.nvim_get_current_buf()
-                            local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
-                            if byte_size > 1024 * 1024 then -- 1 Megabyte max
-                                return {}
+                            local bufs = {}
+                            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                                bufs[vim.api.nvim_win_get_buf(win)] = true
                             end
-                            return { buf }
-                        end
-                    }
+                            return vim.tbl_keys(bufs)
+                        end,
+                    },
+                    { name = "codeium" },
+                },
+                sorting = {
+                    comparators = {
+                        cmp.config.compare.offset,
+                        cmp.config.compare.exact,
+                        cmp.config.compare.score,
+                        cmp.config.compare.recently_used,
+                        require("cmp-under-comparator").under,
+                        cmp.config.compare.kind,
+                    },
                 },
                 snippet = {
                     expand = function(args)
@@ -107,10 +116,8 @@ return {
         },
         config = function()
             local lsp_zero = require("lsp-zero")
-
             lsp_zero.extend_lspconfig({
                 sign_text = true, -- Enable or disable the diagnostic signs
-
                 capabilities = require("cmp_nvim_lsp").default_capabilities()
             })
 
@@ -169,12 +176,12 @@ return {
 
             vim.diagnostic.config({
                 float = {
-                    focusable = true,
-                    style = "minimal",
                     border = "rounded",
-                    source = "always",
+                    focusable = true,
                     header = "",
                     prefix = "",
+                    source = true,
+                    style = "minimal",
                 },
                 signs = {
                     text = {
