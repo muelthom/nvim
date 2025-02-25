@@ -1,8 +1,5 @@
 vim.g.mapleader = " "
 
--- Remap the "Ex"plore command
-vim.keymap.set("n", "<leader>x", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
-
 -- Keep the highlighted lines after indenting.
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")

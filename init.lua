@@ -6,12 +6,6 @@ if vim.g.vscode then
 else
     -- Ordinary Neovim
 
-    -- File explorer (nvim-tree) settings.
-    -- It is strongly recommended to disable netrw. As it is a bundled plugin it
-    -- must be disabled manually at the start of the "init.lua".
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-
     -- Custom keybindings
     require("remaps")
 
