@@ -57,7 +57,7 @@ vim.keymap.set({ "n", "v", "i" }, "<C-w>N", ":vnew<CR>")
 
 vim.keymap.set({ "n", "v" }, "<leader>n", ":bnext<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>N", ":bprev<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>d", ":bnext<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>d", ":bd<CR>")
 
 vim.api.nvim_set_keymap("t", "<C-t>", "<C-\\><C-n>:CFloatTerm<CR>", { noremap = true, silent = true })
 
