@@ -45,3 +45,30 @@ _G.invert_word = function()
     end
 end
 
+
+-- Automatically add opened buffers to Harpoon.
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        local bufname = vim.api.nvim_buf_get_name(0)
+
+        -- Ignore unnamed buffers, directories, and cwd (".")
+        if bufname == "" or bufname == "." or vim.fn.isdirectory(bufname) == 1 then
+            return
+        end
+
+        local harpoon = require("harpoon")
+        local harpoon_list = harpoon:list()
+
+        local exists = false
+        for _, mark in ipairs(harpoon_list.items) do
+            if mark.value == bufname then
+                exists = true
+                break
+            end
+        end
+
+        if not exists and #harpoon_list.items < 5 then
+            harpoon:list():add()
+        end
+    end,
+})
