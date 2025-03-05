@@ -41,7 +41,7 @@ _G.invert_word = function()
         vim.cmd("normal! ciw" .. replacement)
 
         -- Restore the cursor position
-        vim.api.nvim_win_set_cursor(0, {row, col})
+        vim.api.nvim_win_set_cursor(0, { row, col })
     end
 end
 
