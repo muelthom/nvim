@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+vim.keymap.set({ "n", "v" }, "<leader>x", ":Ex<CR>")
+
 -- Keep the highlighted lines after indenting.
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
