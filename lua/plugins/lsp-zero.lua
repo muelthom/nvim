@@ -168,13 +168,6 @@ return {
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
                 vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end)
-                vim.keymap.set({ "n", "x" }, "<F3>",
-                    function()
-                        vim.lsp.buf.format({
-                            async = true,
-                            filter = allow_format({ "lua_ls", "ruff" })
-                        })
-                    end)
             end)
 
             vim.diagnostic.config({
