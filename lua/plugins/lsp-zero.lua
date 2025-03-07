@@ -51,16 +51,19 @@ return {
                 end,
                 sources = {
                     -- Adjust the priority by changing the order of the items in the list.
-                    { name = "nvim_lsp" },
+                    {
+                        name = "nvim_lsp",
+                        keyword_length = 3
+                    },
                     { name = "nvim_lsp_signature_help" },
                     { name = "path" },
                     {
                         name = "luasnip",
-                        keyword_length = 2
+                        keyword_length = 3
                     },
                     {
                         name = "buffer",
-                        keyword_length = 4, -- The number of characters to be typed to trigger auto-completion
+                        keyword_length = 3,
                         get_bufnrs = function()
                             local bufs = {}
                             for _, win in ipairs(vim.api.nvim_list_wins()) do
