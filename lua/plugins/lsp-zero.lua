@@ -94,16 +94,26 @@ return {
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-d>"] = cmp.mapping.scroll_docs(4),
-                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                    ["<CR>"] = cmp.mapping({
+                        -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
+                        i = function(fallback)
+                            if cmp.visible() and cmp.get_active_entry() then
+                                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+                            else
+                                fallback()
+                            end
+                        end,
+                        s = cmp.mapping.confirm({ select = false }),
+                        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+                    }),
                     ["<Tab>"] = cmp.mapping.confirm({ select = false }),
                     ["<C-f>"] = cmp_action.luasnip_jump_forward(),
                     ["<C-b>"] = cmp_action.luasnip_jump_backward(),
                 }),
-                -- Preselect first item (in the completion list).
-                preselect = "item",
-                completion = { completeopt = "menu,menuone,noinsert" },
+                preselect = cmp.PreselectMode.None,
+                completion = { completeopt = "menu,menuone,fuzzy,noselect" },
                 experimental = {
-                    ghost_text = true -- Shows a preview of the auto-completed text in-place
+                    ghost_text = true -- Show a preview of the auto-completed text in-place
                 }
             })
         end
