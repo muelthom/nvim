@@ -40,8 +40,26 @@ return {
                 }
             },
             file_ignore_patterns = {
-                "*.pdf",
-                "*.otf",
+                "%.7z",
+                "%.DS_Store",
+                "%.HEIC",
+                "%.JPE?G",
+                "%.PDG",
+                "%.bin",
+                "%.heic",
+                "%.jpe?g",
+                "%.mkv",
+                "%.mp4",
+                "%.otf",
+                "%.pdf",
+                "%.png",
+                "%.tar",
+                "%.tar.gz",
+                "%.webp",
+                "%.zip",
+                ".git/",
+                "__pycache__/",
+                "venv*/*",
             }
         },
         pickers = {
