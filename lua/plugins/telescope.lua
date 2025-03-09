@@ -4,7 +4,7 @@ return {
     keys = {
         {
             "<leader>ff",
-            function() require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() }) end,
+            function() require("telescope.builtin").find_files() end,
             desc = "Find files in cwd",
         },
         {
