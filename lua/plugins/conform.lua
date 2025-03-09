@@ -32,8 +32,7 @@ return {
         -- Define your formatters
         formatters_by_ft = {
             lua = { "stylua" },
-            python = { "ruff_format", "isort", "black" },
-            javascript = { "prettierd", "prettier", stop_after_first = true },
+            python = { "ruff_organize_imports", "ruff_format" },
         },
         -- Set default options
         default_format_opts = {
@@ -47,14 +46,6 @@ return {
             shfmt = {
                 prepend_args = { "-i", "2" },
             },
-            -- Determine formatter dynamically
-            python = function(bufnr)
-                if require("conform").get_formatter_info("ruff_format", bufnr).available then
-                    return { "ruff_format" }
-                else
-                    return { "isort", "black" }
-                end
-            end,
         },
     },
     init = function()
