@@ -36,10 +36,10 @@ return {
     end,
     keys = {
         {
-            "<C-s>",
+            "<C-b>",
             mode = { "n", "i" },
             function() require('codeium.virtual_text').cycle_or_complete() end,
-            desc = "Request a code _s_suggestion."
+            desc = "Request a code ssuggestion."
         },
     },
 }

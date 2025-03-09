@@ -172,6 +172,7 @@ return {
                 vim.keymap.set("n", "go", function() vim.lsp.buf.type_definition() end)
                 vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end)
                 vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help() end)
+                vim.keymap.set({ "n", "i" }, "<C-s>", function() vim.lsp.buf.signature_help() end)
                 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
                 vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end)
             end)
