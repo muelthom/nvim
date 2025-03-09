@@ -11,8 +11,8 @@ return {
         end,
         dependencies = {
             "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim"
-        }
+            "williamboman/mason-lspconfig.nvim",
+        },
     },
 
     -- Autocompletion
@@ -27,7 +27,7 @@ return {
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-cmdline",
                 "hrsh7th/nvim-cmp",
-                "lukas-reineke/cmp-under-comparator"
+                "lukas-reineke/cmp-under-comparator",
             },
         },
         config = function()
@@ -40,26 +40,25 @@ return {
             cmp.setup({
                 enabled = function()
                     -- Disable completion in comments.
-                    local context = require "cmp.config.context"
+                    local context = require("cmp.config.context")
                     -- Keep command mode completion enabled when cursor is in a comment.
                     if vim.api.nvim_get_mode().mode == "c" then
                         return true
                     else
-                        return not context.in_treesitter_capture("comment")
-                            and not context.in_syntax_group("Comment")
+                        return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
                     end
                 end,
                 sources = {
                     -- Adjust the priority by changing the order of the items in the list.
                     {
                         name = "nvim_lsp",
-                        keyword_length = 3
+                        keyword_length = 3,
                     },
                     { name = "nvim_lsp_signature_help" },
                     { name = "path" },
                     {
                         name = "luasnip",
-                        keyword_length = 3
+                        keyword_length = 3,
                     },
                     {
                         name = "buffer",
@@ -113,10 +112,10 @@ return {
                 preselect = cmp.PreselectMode.None,
                 completion = { completeopt = "menu,menuone,fuzzy,noselect" },
                 experimental = {
-                    ghost_text = true -- Show a preview of the auto-completed text in-place
-                }
+                    ghost_text = true, -- Show a preview of the auto-completed text in-place
+                },
             })
-        end
+        end,
     },
 
     -- LSP
@@ -131,7 +130,7 @@ return {
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_lspconfig({
                 sign_text = true, -- Enable or disable the diagnostic signs
-                capabilities = require("cmp_nvim_lsp").default_capabilities()
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
 
             require("mason").setup()
@@ -195,6 +194,6 @@ return {
                     },
                 },
             })
-        end
-    }
+        end,
+    },
 }
