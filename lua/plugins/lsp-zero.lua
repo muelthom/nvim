@@ -160,10 +160,6 @@ return {
                 }
             })
 
-            local allow_format = function(servers)
-                return function(client) return vim.tbl_contains(servers, client.name) end
-            end
-
             lsp_zero.on_attach(function(client, bufnr)
                 -- See :help lsp-zero-keybindings
                 lsp_zero.default_keymaps({ buffer = bufnr })
