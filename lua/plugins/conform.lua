@@ -43,6 +43,9 @@ return {
         -- Customize formatters
         formatters = {
             lua = { "stylua" },
+            stylua = {
+                prepend_args = { "--indent-type", "Spaces" },
+            },
             shfmt = {
                 prepend_args = { "-i", "2" },
             },
