@@ -1,12 +1,12 @@
 return {
     "wiliamks/nice-reference.nvim",
     dependencies = {
-        "nvim-tree/nvim-web-devicons", -- optional
+        "nvim-tree/nvim-web-devicons", -- Optional
         {
             "rmagatti/goto-preview",
-            opts = { function()
-                require("goto-preview").setup {}
-            end }
-        }
-    }
+            dependencies = { "rmagatti/logger.nvim" },
+            event = "BufEnter",
+            config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+        },
+    },
 }

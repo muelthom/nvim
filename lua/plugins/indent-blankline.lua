@@ -5,7 +5,7 @@ return {
     ---@type ibl.config
     opts = {
         scope = {
-            enabled = false
-        }
+            enabled = false,
+        },
     },
 }

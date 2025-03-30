@@ -4,7 +4,9 @@ return {
     keys = {
         {
             "<leader>ff",
-            function() require("telescope.builtin").find_files() end,
+            function()
+                require("telescope.builtin").find_files()
+            end,
             desc = "Find files in cwd",
         },
         {
@@ -12,20 +14,23 @@ return {
             function()
                 require("telescope.builtin").grep_string({
                     cwd = require("telescope.utils").buffer_dir(),
-                    search =
-                        vim.fn.input("Grep > ")
+                    search = vim.fn.input("Grep > "),
                 })
             end,
             desc = "Find string",
         },
         {
             "<leader>fg",
-            function() require("telescope.builtin").git_files({ cwd = require("telescope.utils").buffer_dir() }) end,
+            function()
+                require("telescope.builtin").git_files({ cwd = require("telescope.utils").buffer_dir() })
+            end,
             desc = "Find Git files",
         },
         {
             "<leader>fb",
-            function() require("telescope.builtin").buffers() end,
+            function()
+                require("telescope.builtin").buffers()
+            end,
             desc = "Find buffers",
         },
     },
@@ -36,8 +41,8 @@ return {
                     -- map actions.which_key to <C-h> (default: <C-/>)
                     -- actions.which_key shows the mappings for your picker,
                     -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-                    ["<C-h>"] = "which_key"
-                }
+                    ["<C-h>"] = "which_key",
+                },
             },
             file_ignore_patterns = {
                 "%.7z",
@@ -60,13 +65,13 @@ return {
                 ".git/",
                 "__pycache__/",
                 "venv*/*",
-            }
+            },
         },
         pickers = {
             find_files = {
-                hidden = true
-            }
+                hidden = true,
+            },
         },
-        extensions = {}
-    }
+        extensions = {},
+    },
 }

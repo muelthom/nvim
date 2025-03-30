@@ -7,6 +7,6 @@ return {
             show_filename_only = false,
             path = 3,
             theme = "auto", -- Automatically attempts to load a theme for the current colorscheme
-        }
-    }
+        },
+    },
 }
