@@ -12,6 +12,10 @@ vim.opt.showcmd = true
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 6
+vim.opt.numberwidth = 3
+vim.opt.signcolumn = "yes:1"
+vim.opt.statuscolumn = "%l%s"
+vim.opt.winborder = "rounded"
 
 -- Create an augroup for Python
 vim.api.nvim_create_augroup("Python", { clear = true })
@@ -31,6 +35,11 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.opt.colorcolumn = "100"
     end,
+})
+
+-- Diagnostics
+vim.diagnostic.config({
+    virtual_text = { current_line = true },
 })
 
 -- Indent options
@@ -60,4 +69,13 @@ vim.opt.listchars = {
     trail = "·",
 }
 
--- vim.cmd 'colorscheme habamax'
+-- Highlight when yanking (copying) text.
+-- Try it with "yap" in normal mode.
+-- See ":help vim.highlight.on_yank()"
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+    callback = function()
+        vim.hl.on_yank()
+    end,
+})

@@ -30,16 +30,18 @@ return {
                     clear = false,
                     next = "<M-]>",
                     prev = "<M-[>",
-                }
-            }
+                },
+            },
         })
     end,
     keys = {
         {
-            "<C-b>",
+            "<C-g>",
             mode = { "n", "i" },
-            function() require('codeium.virtual_text').cycle_or_complete() end,
-            desc = "Request a code ssuggestion."
+            function()
+                require("codeium.virtual_text").cycle_or_complete()
+            end,
+            desc = "Request a code ssuggestion.",
         },
     },
 }
