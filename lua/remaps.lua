@@ -59,6 +59,8 @@ vim.keymap.set({ "n", "v" }, "<leader>n", ":bnext<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>N", ":bprev<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>d", ":bd<CR>")
 
+vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+
 vim.api.nvim_set_keymap("t", "<C-t>", "<C-\\><C-n>:CFloatTerm<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command("Cwdf",
