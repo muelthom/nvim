@@ -21,7 +21,7 @@ return {
                     vim.print("[Conform] No formatters available for this buffer.")
                 end
             end,
-            mode = "",
+            mode = { "n", "i" },
             desc = "Format buffer",
         },
     },
