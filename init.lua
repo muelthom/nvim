@@ -28,6 +28,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if client:supports_method("textDocument/completion") then
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
         end
+
+        -- Add alternative keymaps (old lsp-zero keymaps).
+        if client:supports_method("textDocument/implementation") then
+            vim.keymap.set("n", "gi", function()
+                vim.lsp.buf.implementation()
+            end)
+        end
+        if client:supports_method("textDocument/definition") then
+            vim.keymap.set("n", "gd", function()
+                vim.lsp.buf.definition()
+            end)
+        end
+        if client:supports_method("textDocument/references") then
+            -- Defer the displaying of references to the 'nice-references' plugin.
+            vim.keymap.set("n", "grr", "<cmd>lua require('nice-reference').references()<CR>")
         end
     end,
 })
