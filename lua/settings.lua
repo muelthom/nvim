@@ -40,6 +40,22 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Diagnostics
 vim.diagnostic.config({
     virtual_text = { current_line = true },
+    float = {
+        border = "rounded",
+        focusable = true,
+        header = "",
+        prefix = "",
+        source = true,
+        style = "minimal",
+    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "✘",
+            [vim.diagnostic.severity.WARN] = "▲",
+            [vim.diagnostic.severity.HINT] = "⚑",
+            [vim.diagnostic.severity.INFO] = "»",
+        },
+    },
 })
 
 -- Indent options
