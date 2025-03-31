@@ -63,12 +63,9 @@ vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
 
 vim.api.nvim_set_keymap("t", "<C-t>", "<C-\\><C-n>:CFloatTerm<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_create_user_command("Cwdf",
-    function()
-        vim.cmd(":cd %:h")
-    end,
-    { desc = "Change cwd to that of the currently opened file." }
-)
+vim.api.nvim_create_user_command("Cwdf", function()
+    vim.cmd(":cd %:h")
+end, { desc = "Change cwd to that of the currently opened file." })
 
 vim.api.nvim_set_keymap("n", "!", ":lua invert_word()<CR>", { noremap = true, silent = true })
 
