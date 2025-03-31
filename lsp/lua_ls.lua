@@ -16,7 +16,9 @@ return {
     -- can be found here https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
     settings = {
         Lua = {
-            globals = { "vim" },
+            diagnostics = {
+                globals = { "vim" },
+            },
             runtime = {
                 version = "LuaJIT",
             },
