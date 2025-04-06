@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Enable LSP configurations present on the runtimepath (https://neovim.io/doc/user/options.html#'runtimepath').
 vim.lsp.enable({
     "clangd",
+    "harper_ls",
     "lua_ls",
     "pylsp",
 })
