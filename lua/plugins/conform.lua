@@ -25,14 +25,15 @@ return {
             desc = "Format buffer",
         },
     },
-    -- This will provide type hinting with LuaLS
     ---@module "conform"
     ---@type conform.setupOpts
     opts = {
         -- Define your formatters
         formatters_by_ft = {
+            json = { "jq" },
             lua = { "stylua" },
             python = { "ruff_organize_imports", "ruff_format" },
+            yaml = { "yamlfmt" },
         },
         -- Set default options
         default_format_opts = {
@@ -42,13 +43,13 @@ return {
         format_on_save = false,
         -- Customize formatters
         formatters = {
-            lua = { "stylua" },
-            stylua = {
-                prepend_args = { "--indent-type", "Spaces" },
-            },
             shfmt = {
                 prepend_args = { "-i", "2" },
             },
+            stylua = {
+                prepend_args = { "--indent-type", "Spaces" },
+            },
+            yamlfmt = {},
         },
     },
     init = function()
