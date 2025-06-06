@@ -57,7 +57,6 @@ vim.keymap.set({ "n", "v", "i" }, "<C-w>N", ":vnew<CR>")
 
 vim.keymap.set({ "n", "v" }, "<leader>n", ":bnext<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>N", ":bprev<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>d", ":bd<CR>")
 
 vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
 
