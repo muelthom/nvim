@@ -58,4 +58,5 @@ vim.lsp.enable({
     "harper_ls",
     "lua_ls",
     "pylsp",
+    "gopls",
 })
