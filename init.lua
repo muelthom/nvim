@@ -44,6 +44,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
             -- Defer the displaying of references to the 'nice-references' plugin.
             vim.keymap.set("n", "grr", "<cmd>lua require('nice-reference').references()<CR>")
         end
+        if client:supports_method("textDocument/signatureHelp") then
+            vim.keymap.set("n", "gs", function()
+                vim.lsp.buf.signature_help()
+            end)
+        end
     end,
 })
 
