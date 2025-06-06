@@ -81,7 +81,7 @@ vim.opt.listchars = {
     -- eol = "↵",
     -- lead = '·',
     nbsp = "␣",
-    tab = ">-",
+    tab = "│ ",
     trail = "·",
 }
 
