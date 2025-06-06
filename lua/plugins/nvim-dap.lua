@@ -35,14 +35,13 @@ return {
         { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" }
     },
     config = function()
-        local dap = require("dap")
         local mason_dap = require("mason-nvim-dap")
 
         -- Setup mason-nvim-dap to ensure DAP adapters are installed
         mason_dap.setup({
             ensure_installed = {
-                "python",
-                -- "cppdbg"
+                "debugpy",
+                "devel"
             },
             automatic_installation = true,
 
